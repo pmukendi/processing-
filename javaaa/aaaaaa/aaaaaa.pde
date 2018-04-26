@@ -1,21 +1,26 @@
 class Fish {
-  float x = 0;
-  float y = random(520) ;
-  float xspeed = 1;
+  float x = random(-100, width);
+  float y = random(493, 547) ;
+  float xspeed = random(1, 3);
   void swim() {
     x = x + xspeed;
+
+    if (x > width) {
+      x = random(-200);
+    }
   }
 
   void show() { 
 
     fill(#919B9A);
     stroke(#787C7C);
+    strokeWeight(4);
     line(x, y, x+7, y);
   }
 }
 
 
-Fish[] fishies = new Fish[20];
+Fish[] fishies = new Fish[10];
 
 void setup() {
   size(600, 600);
@@ -66,7 +71,7 @@ void draw() {
 
   for (int i = 0; i < fishies.length; i++) {  
     fishies[i].swim();
-    fishies[i].show();
-  }
+    fishies[i].show();                // fish
+  }  
   println(mouseX, mouseY);
 }
